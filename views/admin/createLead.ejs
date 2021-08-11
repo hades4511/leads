@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <title>Leads2</title>
+
+    <link rel="shortcut icon" href="/images/lead-fev.png">
+  </head>
+  <body>
+    
+    <main class="custop-dash-bg">
+
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="container px-0">
+            <a class="navbar-brand" href="/admin"><img src="/images/logo.png" alt="Logo"></a>
+            <span class="navbar-text text-right">
+            <i class="bi bi-person"></i>&nbsp;<%= email %>
+            </span>
+        </div>
+    </nav>
+      
+        <!-- Page Content  -->
+        <div id="content" class="right-sidebar">
+          <h2 class="mb-4">Create Lead</h2>
+          
+          <div class="active-module-bx">
+            <h6 class="mb-5">Lead Details</h6>
+            <div class="row">
+              <form action="/admin/lead" method="POST" class="credit-card-form">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <div class="row">
+                  <div class="col-12 col-md-8 col-lg-6">
+                    
+                      <label for="">From*</label>
+                      <input required required name="from" type="text" value="<%= from %>" placeholder="From">
+
+                      <label for="">To*</label>
+                      <input required type="text" name="to" placeholder="To">
+                  </div>
+                  <div class="col-12 col-md-8 col-lg-6">
+                      <label for="">Subject*</label>
+                      <input required type="text" name="subject" value="<%= subject %>" placeholder="Subject">
+
+                      <label for="">Source*</label>
+                      <input required type="text" name="source" value="<%= source %>" placeholder="Source">
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="">Date*</label>
+                  <input required type="date" name="date" placeholder="mm/dd/yyyy">
+
+                  <label for="">Body*</label>
+                  <input required type="text" name="body" value="<%= body %>" placeholder="Body">
+                  <button style="float: right;">Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Js Files -->
+    <%- include('../includes/scripts.ejs') %>
+  </body>
+</html>

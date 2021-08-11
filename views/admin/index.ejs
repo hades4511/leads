@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <title>Leads2</title>
+
+    <link rel="shortcut icon" href="/images/lead-fev.png">
+  </head>
+  <body>
+    
+    <main class="custop-dash-bg">
+
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="container px-0">
+            <a class="navbar-brand" href="/admin"><img src="/images/logo.png" alt="Logo"></a>
+            <span class="navbar-text text-right">
+            <i class="bi bi-person"></i>&nbsp;<%= email %>
+            </span>
+        </div>
+    </nav>
+    
+    <div class="wrapper d-flex align-items-stretch">
+        <div id="sidebar">
+            <div class="custom-menu">
+            <button type="button" id="sidebarCollapse">
+                <i class="bi bi-list"></i>
+                <i class="bi bi-x-lg"></i>
+            </button>
+            </div>
+            <div class="slidebar-link">
+            <ul class="list-unstyled">
+                <li><a class="active-bg" href="/admin/lead">Dashboard</a></li>
+                <li><a href="/admin/lead">Send Lead</a></li>
+            </ul>
+        </div>
+    </div>
+    
+      
+        <!-- Page Content  -->
+        <div id="content" class="right-sidebar">
+          <h1 class="mb-4">Dashboard</h1>
+          
+          <div class="dash-med">
+          </div>
+
+          <div class="active-module-bx">
+            <h4 class="mb-3">Users</h4>
+            <table class="invo-table mt-0">
+              <thead class="text-white">
+                <tr>
+                  <th>Sr</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% let sr = 1; %>
+                <% for(user of users){ %>
+                  <tr>
+                    <td><%= sr %></td>
+                    <td><%= user.email %></td>
+                    <% sr++ %>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Js Files -->
+    <%- include('../includes/scripts.ejs') %>
+  </body>
+</html>

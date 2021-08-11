@@ -1,0 +1,56 @@
+<%- include('includes/head.ejs') %>
+    <link rel="shortcut icon" href="/images/lead-fev.png">
+  </head>
+  <body>
+    
+    <main class="custop-dash-bg">
+
+      <!-- Navbar -->
+      <%- include('includes/navdash.ejs') %>
+      
+        <!-- Page Content  -->
+        <div id="content" class="right-sidebar">
+          <h2 class="mb-4">Setting</h2>
+          
+          <div class="active-module-bx">
+            <h6 class="mb-5">Account Details</h6>
+            <div class="row">
+              <form action="/setting" method="POST" class="credit-card-form">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <div class="row">
+                  <div class="col-12 col-md-8 col-lg-6">
+                    
+                      <label for="">Full name</label>
+                      <input required name="name" type="text" value="<%= name %>" placeholder="Full Name">
+
+                      <label for="">Password</label>
+                      <input type="password" name="password" placeholder="1234 1234 123 1234">
+
+                      <label for="">Confirm Password</label>
+                      <input type="password" name="confirm" placeholder="1234 1234 123 1234">
+                  </div>
+                  <div class="col-12 col-md-8 col-lg-6">
+                      <label for="">Comapny*</label>
+                      <input required type="text" name="company" value="<%= company %>" placeholder="Lead 2 Appointments Ltd - idm.entrust">
+
+                      <label for="">Country*</label>
+                      <input required type="text" name="country" value="<%= country %>" placeholder="United Kingdom">
+
+                      <label for="">Address*</label>
+                      <input required type="text" name="address" value="<%= address %>" placeholder="19 GLOUCESTER ROAD, BEDFORD, BEDFORDSHIRE,">
+                      <button style="float: right;">Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Js Files -->
+    <%- include('includes/scripts.ejs') %>
+  </body>
+</html>

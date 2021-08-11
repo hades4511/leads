@@ -1,0 +1,173 @@
+<%- include('includes/head.ejs') %>
+    <link rel="shortcut icon" href="/images/lead-fev.png">
+  </head>
+  <body>
+    
+    <main class="custop-dash-bg">
+
+      <!-- Navbar -->
+      <%- include('includes/navdash.ejs') %>
+      
+        <!-- Page Content  -->
+        <div id="content" class="right-sidebar">
+          <h1 class="mb-4">Dashboard</h1>
+          
+          <div class="dash-med">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-md-6 col-lg-4 d-flex">
+                <div class="dash-bx">
+                  <img src="/images/dash-bx-img1.png" alt="Image">
+                  <span>
+                    <h3><%= cemail %></h3>
+                    <p>Email leads</p>
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-6 col-lg-4 d-flex">
+                <div class="dash-bx">
+                  <img src="/images/dash-bx-img2.png" alt="Image">
+                  <span>
+                    <h3><%= social %></h3>
+                    <p>Social leads</p>
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-6 col-lg-4 d-flex">
+                <div class="dash-bx">
+                  <img src="/images/dash-bx-img3.png" alt="Image">
+                  <span>
+                    <h3><%= chatbot %></h3>
+                    <p>Chatbot leads</p>
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-6 col-lg-4 d-flex">
+                <div class="dash-bx">
+                  <img src="/images/dash-bx-img4.png" alt="Image">
+                  <span>
+                    <h3><%= retargeting %></h3>
+                    <p>Retargeting conversations</p>
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-6 col-lg-4 d-flex">
+                <div class="dash-bx">
+                  <img src="/images/dash-bx-img5.png" alt="Image">
+                  <span>
+                    <h3><%= ppc %></h3>
+                    <p>PPC Conversions</p>
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-6 col-lg-4 d-flex">
+                <div class="dash-bx">
+                  <img src="/images/dash-bx-img6.png" alt="Image">
+                  <span>
+                    <h3><%= leads.length %></h3>
+                    <p>Leads Total</p>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="active-module-bx">
+            <h4 class="mb-3">LEADS</h4>
+            <table class="invo-table mt-0">
+              <thead class="text-white">
+                <tr>
+                  <th>Date</th>
+                  <th>FORM</th>
+                  <th>SOURCE</th>
+                  <th class="text-center">ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let lead of leads) { %>
+                  <tr>
+                    <td><%= new Date(lead.date).toDateString() %></td>
+                    <td><%= lead.from %></td>
+                    <td><%= lead.source %></td>
+                    <td>
+                      <button class="action-btn text-center" data-toggle="modal" data-target="#<%= lead.subject.replace(/[^a-zA-Z]+/, '') %>">View <i class="bi bi-eye"></i></button>
+                    </td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+            <% for(let lead of leads) { %>
+              <div class="modal fade" id="<%= lead.subject.replace(/[^a-zA-Z]+/, '') %>" tabindex="-1" aria-labelledby="<%= lead._id %>Label" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="<%= lead._id %>Label">View Lead</h5>
+                      <button class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="bi bi-x"></i></span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="" class="form-fields">
+                        <label for="">From:</label>
+                        <input type="text" value="<%= lead.from %>">
+                        <label for="">To:</label>
+                        <input type="text" value="<%= lead.to %>">
+                        <label for="">Subject:</label>
+                        <input type="text" value="<%= lead.subject %>">
+                        <label for="">Body:</label>
+                        <textarea rows="14"><%= lead.body %></textarea>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">View Lead</h5>
+                    <button class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true"><i class="bi bi-x"></i></span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="" class="form-fields">
+                      <label for="">From:</label>
+                      <input type="text" placeholder="Curtis Wright <curtis.wright@icts.co.uk>">
+                      <label for="">To:</label>
+                      <input type="text" placeholder="arla Threadgold <carla.threadgold@identity-methods.co>">
+                      <label for="">Subject:</label>
+                      <input type="text" placeholder="RE EXTERNAL : hoping to help">
+                      <label for="">Body:</label>
+                      <textarea rows="14" placeholder="Hi Carla,
+
+Apologies, it's an extremely busy time currently so unable to spare any. If you want to put an Invir\te to me for the back end of August we can catch up them.
+
+Kind Regards
+
+Curtis Wright
+
+Head of Electronic Security and Monitoring Services
+                      "></textarea>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Js Files -->
+    <%- include('includes/scripts.ejs') %>
+  </body>
+</html>

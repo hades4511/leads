@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs') %>
+  </head>
+  <body>
+    
+    <main class="custop-dash-bg">
+
+      <!-- Navbar -->
+      <%- include('../includes/nav.ejs') %>
+
+      <div id="content" class="log-forn">
+        <div class="login-form">
+          <h2>Login </h2>
+          <form action="/admin/signin" method="POST" class="form-feilds">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <input type="email" name="email" value="<%= email %>" placeholder="Email">
+            <input type="password" name="pass" placeholder="Password">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <span><input type="checkbox">Remember me</span>
+              <span><a href="/passwordchange" class="text-white">Forgot Password?</a></span>
+            </div>
+            <% if(error){ %>
+              <div>
+                  <h4><%= error %></h4>
+              </div>
+            <% } %>
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Js Files -->
+    <%- include('../includes/scripts.ejs') %>
+  </body>
+</html>

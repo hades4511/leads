@@ -1,0 +1,280 @@
+@media (min-width: 1650px) {
+    main .container {
+        max-width: 1600px;
+    }
+    .slidebar-link ul li a {
+        padding: 18px 35px;
+        font-size: 20px;
+    }
+    span.navbar-text.text-right {
+        font-size: 20px;
+    }
+    button.billing-btn {
+        font-size: 18px;
+    }
+    p.subs-start {
+        font-size: 18px;
+    }
+    .active-module-bx h6 {
+        font-size: 22px;
+    }
+    .active-module-bx p {
+        font-size: 18px;
+    }
+    .switch-btn p {
+        font-size: 18px;
+    }
+    .span-bg-txt p {
+        font-size: 27px;
+    }
+    .update-module-btn {
+        font-size: 20px;
+    }
+    .visa-number {
+        width: 50%;
+    }
+    .visa-number img {
+        width: 18%;
+    }
+    .visa-default button {
+        font-size: 20px;
+    }
+    credit-card-form label {
+        font-size: 18px;
+    }
+    credit-card-form input {
+        font-size: 20px;
+    }
+    credit-card-form button {
+        font-size: 20px;
+    }
+    .invo-table thead tr th {
+        font-size: 22px;
+    }
+    .invo-table tbody tr td {
+        font-size: 18px;
+    }
+}
+@media (max-width: 1367px) {
+    .right-sidebar {
+        padding: 60px 35px 60px 35px;
+    }
+}
+@media (max-width: 1199px) {
+    .right-sidebar {
+        padding: 50px 30px;
+    }
+    .active-module-bx {
+        padding: 40px 40px;
+        margin-top: 30px;
+    }
+    .span-bg-txt p {
+        font-size: 18px;
+    }
+    .click-tog-bx2 {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+    .switch-btn {
+        padding: 12px 22px;
+    }
+    .visa-default button {
+        padding: 10px 20px;
+    }
+    a.navbar-brand {
+        width: 20% !important;
+    }
+    .login-form {
+        padding: 60px;
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 1023px) {
+    .wrapper {
+        position: relative;
+    }
+    #sidebar {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        z-index: 1;
+    }
+    #sidebar.active {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+    }
+    #sidebar .custom-menu button i.bi.bi-x-lg {
+        visibility: hidden;
+    }
+    #sidebar .custom-menu button i.bi.bi-list {
+        visibility: visible;
+        font-size: 19px;
+    }
+    #sidebar.active .custom-menu button i.bi.bi-x-lg {
+        visibility: visible;
+        font-size: 13px;
+    }
+    #sidebar.active .custom-menu button i.bi.bi-list {
+        visibility: hidden;
+    }
+    .login-form {
+        width: 70%;
+    }
+}
+@media (max-width: 767px) {
+    a.navbar-brand {
+        width: 28% !important;
+    }
+    .right-sidebar {
+        padding: 80px 15px;
+    }
+    .active-module-bx {
+        padding: 40px 15px;
+        margin-top: 30px;
+    }
+    .click-tog-bx2 {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 20px;
+    }
+    .visa-card-det {
+        display: block;
+        padding: 10px 15px;
+    }
+    .visa-number {
+        margin-bottom: 15px;
+    }
+    p.subs-start {
+        font-size: 12px;
+    }
+    p.subs-start i {
+        font-size: 32px;
+    }
+    button.billing-btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+    .active-module-bx p {
+        padding-bottom: 22px;
+        padding-top: 15px;
+    }
+    .switch-btn p {
+        padding: 0;
+    }
+    .switch-bx-price-det p {
+        padding: 8px 0;
+    }
+    .vat-p-spac p {
+        padding: 0;
+    }
+    credit-card-form input {
+        margin-bottom: 18px;
+    }
+    credit-card-form button {
+        margin-top: 10px;
+    }
+    img.switch-img {
+        width: 95%;
+        margin-top: 42px;
+    }
+    .log-forn h1.error {
+        font-size: 120px;
+    }
+    .log-forn h1 {
+        font-size: 55px;
+    }
+    .login-form {
+        padding: 25px;
+        width: 95%;
+        margin: 0 auto;
+    }
+    
+}
+@media (max-width: 578px) {
+    .invo-table {
+        display: block;
+        overflow-x: scroll;
+    }
+}
+@media (max-width: 320px) {
+    p.subs-start {
+        font-size: 10px;
+    }
+    button.billing-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+    .active-module-bx p {
+        padding-bottom: 18px;
+        padding-top: 12px;
+        font-size: 11px;
+    }
+    .switch-btn {
+        padding: 0 9px;
+    }
+    .click-tog-bx2 {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+    .email-p-spac {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .vat-p-spac {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .span-bg-txt {
+        padding: 0 0 0 0;
+    }
+    .update-module-btn {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+    .visa-card-det {
+        display: block;
+        padding: 10px 10px;
+    }
+    .visa-default button {
+        font-size: 11px;
+    }
+    .visa-number img {
+        width: 26%;
+        margin-right: 10px;
+    }
+    credit-card-form label {
+        padding: 0 0 6px 0;
+        font-size: 12px;
+    }
+    credit-card-form input {
+        margin-bottom: 18px;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    credit-card-form button {
+        margin-top: 10px;
+        font-size: 12px;
+    }
+    .invo-table tbody tr td {
+        font-size: 12px;
+    }
+    .invo-table thead tr th {
+        padding: 15px 15px;
+        font-size: 14px;
+    }
+    .slidebar-link ul li a {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    #sidebar.active .custom-menu {
+        margin-right: -15px !important;
+    }
+    .right-sidebar {
+        padding: 60px 15px;
+    }
+    a.navbar-brand {
+        width: 35% !important;
+    }
+}
