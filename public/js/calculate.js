@@ -95,6 +95,7 @@ if(payments){
         alert(result.error.message);
         } else {
             console.log(result);
+            window.location.href = `/billing`;
         }
     });
 }

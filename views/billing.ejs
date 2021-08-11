@@ -142,7 +142,7 @@
                   <td></td>
                   <td></td>
                   <td>Tax (20%):</td>
-                  <td>$<%= invoice.tax || 0 %></td>
+                  <td>$<%= invoice.tax/100 || 0 %></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -159,40 +159,6 @@
               </tbody>
             </table>
           </div>
-
-          <!-- <div class="active-module-bx mb-5">
-            <h6 class="mb-4">Upcoming invoice</h6>
-            <table class="invo-table mt-0">
-              <thead class="text-white">
-                <tr>
-                  <th>Date</th>
-                  <th>Invoice</th>
-                  <th>Amount</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>April 27, 2021</td>
-                  <td>011473</td>
-                  <td>$799.00</td>
-                  <td><a href=""><i class="bi bi-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>May 27, 2021</td>
-                  <td>011639</td>
-                  <td>$495.00</td>
-                  <td><a href=""><i class="bi bi-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>June 27, 2021</td>
-                  <td>011258</td>
-                  <td>$1495.00</td>
-                  <td><a href=""><i class="bi bi-download"></i></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div> -->
         </div>
       </div>
 
