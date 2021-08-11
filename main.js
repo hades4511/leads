@@ -28,12 +28,22 @@ server.set('views', 'views');
 server.use(
     helmet.contentSecurityPolicy({
         directives: {
-        defaultSrc: ["'self'"],
-        fontSrc: ["'self'", "https://fonts.gstatic.com", "https://maxcdn.bootstrapcdn.com"],
-        scriptSrc: ["'self'"],
+        defaultSrc: ["'self'", "https://js.stripe.com/"],
+        fontSrc: [
+            "'self'", 
+            "https://fonts.gstatic.com", 
+            "https://maxcdn.bootstrapcdn.com",
+            "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/fonts/"
+        ],
+        scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com/v3/"],
         objectSrc: ["'none'"],
         imgSrc: ["'self'", "https:", "data:"],
-        styleSrc: ["'self'", "https://fonts.googleapis.com", "https://maxcdn.bootstrapcdn.com"],
+        styleSrc: [
+            "'self'", 
+            "https://fonts.googleapis.com", 
+            "https://maxcdn.bootstrapcdn.com", 
+            "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        ],
         upgradeInsecureRequests: [],
         },
     })
