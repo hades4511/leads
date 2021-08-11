@@ -124,7 +124,7 @@
                 <% for(let data of invoice.lines.data){ %>
                   <tr>
                     <td><%= sr %></td>
-                    <td><%= new Date(data.period.start).toDateString() %> - <%= new Date(data.period.end).toDateString() %></td>
+                    <td><%= new Date(data.period.start*1000).toDateString() %> - <%= new Date(data.period.end*1000).toDateString() %></td>
                     <td>
                       <%= data.quantity %> x <%= data.price.product.name %> v3 (at <%= data.price.unit_amount/100 %>/month)
                     </td>
