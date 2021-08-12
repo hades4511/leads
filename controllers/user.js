@@ -37,25 +37,40 @@ const renderBill = async (req, res, payment, subscriptionId, clientSecret) => {
             break;
         }
     }
-    const invoice = await stripe.invoices.retrieveUpcoming({
+    stripe.invoices.retrieveUpcoming({
         customer: req.session.stripe_id,
-    });
-    for(i of invoice.lines.data){
-        i.price.product = await stripe.products.retrieve(
-            i.price.product
-        );
-    }
-    return res.render('billing', {
-        email: req.session.email,
-        prices: prices.data,
-        subscriptions: subscriptions.data,
-        tax: taxRates.data,
-        paymentMethods: paymentMethods.data,
-        payment: payment,
-        subscriptionId: subscriptionId,
-        clientSecret: clientSecret,
-        invoice: invoice,
-    });
+    })
+    .then(async invoice => {
+        for(i of invoice.lines.data){
+            i.price.product = await stripe.products.retrieve(
+                i.price.product
+            );
+        }
+        return res.render('billing', {
+            email: req.session.email,
+            prices: prices.data,
+            subscriptions: subscriptions.data,
+            tax: taxRates.data,
+            paymentMethods: paymentMethods.data,
+            payment: payment,
+            subscriptionId: subscriptionId,
+            clientSecret: clientSecret,
+            invoice: invoice,
+        });
+    })
+    .catch(err => {
+        return res.render('billing', {
+            email: req.session.email,
+            prices: prices.data,
+            subscriptions: subscriptions.data,
+            tax: taxRates.data,
+            paymentMethods: paymentMethods.data,
+            payment: payment,
+            subscriptionId: subscriptionId,
+            clientSecret: clientSecret,
+            invoice: {},
+        });
+    })
 }
 
 exports.Dashboard = async (req, res, next) => {

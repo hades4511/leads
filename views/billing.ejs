@@ -120,42 +120,44 @@
                 </tr>
               </thead>
               <tbody>
-                <% let sr = 1; %>
-                <% for(let data of invoice.lines.data){ %>
+                <% if(Object.keys(invoice).length > 0){ %>
+                  <% let sr = 1; %>
+                  <% for(let data of invoice.lines.data){ %>
+                    <tr>
+                      <td><%= sr %></td>
+                      <td><%= new Date(data.period.start*1000).toDateString() %> - <%= new Date(data.period.end*1000).toDateString() %></td>
+                      <td>
+                        <%= data.quantity %> x <%= data.price.product.name %> v3 (at <%= data.price.unit_amount/100 %>/month)
+                      </td>
+                      <td>$<%= data.price.unit_amount/100 %></td>
+                    </tr>
+                    <% sr++ %>
+                  <% } %>
                   <tr>
-                    <td><%= sr %></td>
-                    <td><%= new Date(data.period.start*1000).toDateString() %> - <%= new Date(data.period.end*1000).toDateString() %></td>
-                    <td>
-                      <%= data.quantity %> x <%= data.price.product.name %> v3 (at <%= data.price.unit_amount/100 %>/month)
-                    </td>
-                    <td>$<%= data.price.unit_amount/100 %></td>
+                    <td></td>
+                    <td></td>
+                    <td>Subtotal:</td>
+                    <td>$<%= invoice.subtotal/100 %></td>
                   </tr>
-                  <% sr++ %>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Tax (20%):</td>
+                    <td>$<%= invoice.tax/100 || 0 %></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total:</td>
+                    <td>$<%= invoice.total/100 %></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Amount Due:</td>
+                    <td>$<%= invoice.amount_due/100 %></td>
+                  </tr>
                 <% } %>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td>Subtotal:</td>
-                  <td>$<%= invoice.subtotal/100 %></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td>Tax (20%):</td>
-                  <td>$<%= invoice.tax/100 || 0 %></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td>Total:</td>
-                  <td>$<%= invoice.total/100 %></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td>Amount Due:</td>
-                  <td>$<%= invoice.amount_due/100 %></td>
-                </tr>
               </tbody>
             </table>
           </div>
