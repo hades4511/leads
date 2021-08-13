@@ -83,7 +83,7 @@ exports.PasswordChangeAction = (req, res, next) => {
                 <p>Click this 
                     <a href="${process.env.BASE_URL}/reset/${token}">link</a> 
                     to set a new password
-                </p>>
+                </p>
                 `
             });
             return res.render('reset-password', {
@@ -177,7 +177,6 @@ exports.SignInAction = (req, res, next) => {
 }
 
 exports.SignUpAction = (req, res, next) => {
-    console.log('signup action')
     const errors = validationResult(req).array();
     const name = req.body.name;
     const email = req.body.email;
@@ -187,17 +186,54 @@ exports.SignUpAction = (req, res, next) => {
     const pass = req.body.pass;
     bcrypt.hash(pass, 12)
     .then(hashedpass => {
-        const user = new User(name, email, hashedpass);
-        return user.signup();
+        crypto.randomBytes(32, (err, buffer) => {
+            if(err){
+                console.log(err);
+                return res.redirect('/passwordchange');
+            }
+            const token = buffer.toString('hex');
+            const user = new User(name, email, hashedpass);
+            user.token = token;
+            user.tokenExpiry = Date.now() + 3600000;
+            user.signup('tempusers');
+            transporter.sendMail({
+                to: email,
+                from: process.env.EMAIL,
+                subject: 'Verifiy Email',
+                html: `
+                <p>You created an Account</p>
+                <p>Click this 
+                    <a href="${process.env.BASE_URL}/verify/${token}">link</a> 
+                    to verify your email.
+                </p>
+                `
+            });
+            res.render('email');
+        })
+    })
+    .catch(err => throwerror(err, 500))
+}
+
+exports.Verify = (req, res, next) => {
+    const token = req.params.token;
+    let newuser;
+    User.findByTokenTemp(token)
+    .then(user => {
+        if(!user){
+            return res.redirect('/');
+        }
+        newuser = new User(user.fullname, user.email, user.password);
+        User.deleteuser(user._id);
+        return newuser.signup('users')
     })
     .then(user => {
         stripe.customers.create({
-            name: email,
+            name: newuser.email,
         })
         .then(customer => {
             User.addStripeId(user.insertedId, customer.id);
             return res.redirect('/signin');
         })
     })
-    .catch(err => throwerror(err, 500))
+    .catch(err => console.log(err))
 }

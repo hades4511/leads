@@ -6,7 +6,7 @@ const adminController = require('../controllers/admin');
 const router = express.Router();
 
 const IsAuth = (req, res, next) =>{
-    if(!req.session.email || req.session.isadmin){
+    if(!req.session.email || !req.session.isadmin){
         return res.redirect('/admin/signin');
     }
     next();

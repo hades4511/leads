@@ -37,6 +37,7 @@ const renderBill = async (req, res, payment, subscriptionId, clientSecret) => {
             break;
         }
     }
+    console.log(paymentMethods);
     stripe.invoices.retrieveUpcoming({
         customer: req.session.stripe_id,
     })
@@ -168,6 +169,7 @@ exports.SaveCard = async (req, res, next) => {
     );
     const customer = await stripe.customers.retrieve(req.session.stripe_id);
     if(!customer.invoice_settings.default_payment_method){
+        console.log('here');
         stripe.customers.update(
             req.session.stripe_id,
             {invoice_settings: {default_payment_method: paymentId}}

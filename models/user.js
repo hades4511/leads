@@ -11,9 +11,14 @@ module.exports = class User{
         this.address = '';
     }
 
-    signup() {
+    signup(collectionName) {
         const db = getdb();
-        return db.collection('users').insertOne(this);
+        return db.collection(collectionName).insertOne(this);
+    }
+
+    static deleteuser(id){
+        const db = getdb();
+        return db.collection('tempusers').deleteOne({_id: id});
     }
 
     static update(user){
@@ -34,6 +39,11 @@ module.exports = class User{
     static findByToken(token){
         const db = getdb();
         return db.collection('users').find({token: token, tokenExpiry: { $gt : Date.now() }}).next();
+    }
+
+    static findByTokenTemp(token){
+        const db = getdb();
+        return db.collection('tempusers').find({token: token, tokenExpiry: { $gt : Date.now() }}).next();
     }
 
     static findByTokenEmail(token, email){

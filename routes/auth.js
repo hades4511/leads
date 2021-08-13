@@ -18,16 +18,7 @@ router.post(
         .isEmail(),
     body('pass', 'Please enter a password with atleast 8 characters containing at least one uppercase letter, one lowercase letter, and one number')
         .notEmpty()
-        .trim()
-        .isStrongPassword(
-          {
-            minLength: 8,
-            minLowercase: 1,
-            minUppercase: 1,
-            minNumbers: 1,
-            minSymbols: 0
-          }
-        ),
+        .trim(),
     ],
     authController.SignInAction
   );
@@ -100,6 +91,7 @@ router.post(
   ],
   authController.PasswordChangedAction)
 router.get('/reset/:token', authController.PasswordChanged);
+router.get('/verify/:token', authController.Verify);
 router.post('/passwordchange', authController.PasswordChangeAction);
 router.get('/passwordchange', authController.PasswordChange);
 
